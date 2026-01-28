@@ -1,2 +1,36 @@
-﻿<h2>My Bookings</h2>
-<p>This page shows tourist booking history.</p>
+﻿@model IEnumerable<TourismPlatform.Models.Booking>
+
+<h2>My Bookings</h2>
+
+<!-- ✅ Add Booking Button -->
+<a asp-action="BookTour" class="btn btn-success mb-3">+ New Booking</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tour</th>
+            <th>Date</th>
+            <th>People</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.TourName</td>
+                <td>@booking.BookingDate.ToShortDateString()</td>
+                <td>@booking.NumberOfPeople</td>
+                <td>@booking.Status</td>
+                <td>@booking.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <a asp-action="EditBooking" asp-route-id="@booking.Id" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

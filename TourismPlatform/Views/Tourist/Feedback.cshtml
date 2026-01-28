@@ -1,8 +1,36 @@
-﻿<h2>Feedback</h2>
+﻿@model TourismPlatform.Models.Feedback
 
-<form>
-    <label>Write your feedback:</label><br /><br />
-    <textarea rows="4" cols="50" placeholder="Enter your feedback here"></textarea>
-    <br /><br />
+<h2>Feedback</h2>
+
+@if (TempData["FeedbackSuccess"] != null)
+{
+    <p style="color:green">@TempData["FeedbackSuccess"]</p>
+}
+
+<form asp-action="Feedback" method="post">
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label asp-for="Message"></label><br />
+        <textarea asp-for="Message" rows="4" cols="50"></textarea>
+        <span asp-validation-for="Message" style="color:red"></span>
+    </div>
+
+    <div>
+        <label asp-for="Rating"></label>
+        <select asp-for="Rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+
+    <br />
     <button type="submit">Submit Feedback</button>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

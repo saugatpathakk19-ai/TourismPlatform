@@ -1,0 +1,33 @@
+﻿@model TourismPlatform.Models.Booking
+
+<h2>Edit Booking</h2>
+
+<form asp-action="EditBooking" asp-route-id="@Model.Id" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="TourName" class="form-label"></label>
+        <input asp-for="TourName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="BookingDate" class="form-label"></label>
+        <input asp-for="BookingDate" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NumberOfPeople" class="form-label"></label>
+        <input asp-for="NumberOfPeople" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <input asp-for="Status" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="MyBookings" class="btn btn-secondary">Cancel</a>
+</form>
+

@@ -1,0 +1,33 @@
+﻿@model TourismPlatform.Models.Booking
+
+<h2>New Booking</h2>
+
+<form asp-action="BookTour" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="TourName" class="form-label"></label>
+        <input asp-for="TourName" class="form-control" />
+        <span asp-validation-for="TourName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="BookingDate" class="form-label"></label>
+        <input asp-for="BookingDate" type="date" class="form-control" />
+        <span asp-validation-for="BookingDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NumberOfPeople" class="form-label"></label>
+        <input asp-for="NumberOfPeople" type="number" class="form-control" />
+        <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Booking</button>
+</form>
